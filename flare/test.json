@@ -1,0 +1,1 @@
+{'nestKeys': ['fund', 'department', 'class'], 'sortBy': 2019, 'input_files': [{'path': '../proposed-ordinance/output/FY2017-proposed.csv', 'fiscal_year': 2017}, {'path': '../proposed-ordinance/output/FY19-proposed.csv', 'fiscal_year': 2019}]}
