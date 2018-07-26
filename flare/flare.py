@@ -13,16 +13,7 @@ args = govs[gov];
 SORT_BY = args['sortBy']
 NEST_KEYS = args['nestKeys'] 
 INPUT_FILES = args['inputFiles']
-INPUT_FILE = [
-  {
-    'fiscal_year': '2017',
-    'path': '../proposed-ordinance/output/FY2017-proposed.csv',
-  },
-  {
-    'fiscal_year': '2019',
-    'path': '../proposed-ordinance/output/FY19-proposed.csv',
-  },
-]
+TOTAL_FIELD = args['totalField']
 
 def construct_id(row, keys, max_index):
   id_parts = []
@@ -37,7 +28,7 @@ def nest(rows, keys, current_index=0, sort_by=None):
   grouped_rows = defaultdict(lambda: {
     'children': [],
     'gross_cost': {
-      'accounts': defaultdict(int)
+      'accounts': defaultdict(long)
     }
   })
 
@@ -46,7 +37,7 @@ def nest(rows, keys, current_index=0, sort_by=None):
     group_dict = grouped_rows[row[key]]
     group_dict['id'] = construct_id(row, keys, current_index)
     group_dict['name'] = row[key]
-    group_dict['gross_cost']['accounts'][row['fiscal_year']] += int(row['total'])
+    group_dict['gross_cost']['accounts'][row['fiscal_year']] += float(row[TOTAL_FIELD])
     group_dict['children'].append(row)
 
   # For each grouping, recurse on its children until at last key

@@ -13,7 +13,7 @@ open-budget application.
 Add an agency to the ``config.yml`` file. Next run:
 
 ```
-python flare.py --gov=phl > data.json
+python flare.py phl > data.json
 ```
 
 ## Config.yml
